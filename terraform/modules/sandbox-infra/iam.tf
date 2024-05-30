@@ -30,9 +30,9 @@ resource "oci_identity_user" "bastion_iam_user" {
 
 resource "oci_identity_group" "bastion_iam_group" {
   compartment_id = var.tenancy_id
-  description    = var.iac_group_name
-  name           = var.iac_group_name
-  freeform_tags  = merge({ Name = "${var.iac_group_name}" }, var.tags)
+  description    = "${var.iac_group_name}-bastion-${var.workload_name}-${var.sandbox_env}"
+  name           = "${var.iac_group_name}-bastion-${var.workload_name}-${var.sandbox_env}"
+  freeform_tags  = merge({ Name = "${var.iac_group_name}-bastion-${var.workload_name}-${var.sandbox_env}" }, var.tags)
   provider       = oci.home
 }
 
