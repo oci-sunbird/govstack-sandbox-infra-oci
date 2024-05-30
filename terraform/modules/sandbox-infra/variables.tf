@@ -143,3 +143,8 @@ variable "workload_name" {
   type        = string
   description = "Workload Name"
 }
+
+variable "output_dir" {
+  description = "where generate output"
+  default     = "/iac-run-dir/output"
+}
