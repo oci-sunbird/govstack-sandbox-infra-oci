@@ -63,6 +63,7 @@ resource "local_sensitive_file" "deployment_status" {
       auth_token        = oci_identity_auth_token.bastion_user_auth_token.token,
       bastion_iam_key   = tls_private_key.bastion_user_key.private_key_pem,
       bastion_public_ip = oci_core_instance.bastion.public_ip,
+      ocir_url          = local.ocir_url,
   bastion_ssh_key = tls_private_key.compute_ssh_key.private_key_pem })
   filename        = "${var.output_dir}/outputs.txt"
   file_permission = "0600"

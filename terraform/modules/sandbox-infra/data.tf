@@ -36,3 +36,10 @@ data "oci_core_images" "node_pool_images" {
 data "oci_containerengine_cluster_option" "oke" {
   cluster_option_id = "all"
 }
+
+data "oci_identity_regions" "current_region" {
+}
+
+data "oci_objectstorage_namespace" "ns" {
+  compartment_id = var.compartment_id
+}

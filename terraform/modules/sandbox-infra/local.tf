@@ -158,3 +158,11 @@ locals {
     "Allow group id ${oci_identity_group.bastion_iam_group.id} to manage repos in compartment id ${var.compartment_id}",
   ]
 }
+
+
+locals {
+  current_region         = [for item in data.oci_identity_regions.current_region.regions : item if lookup(item, "name", null) == var.region]
+  ocir_docker_repository = join("", [lower(lookup(local.current_region[0], "key")), ".ocir.io"])
+  ocir_namespace         = lookup(data.oci_objectstorage_namespace.ns, "namespace")
+  ocir_url               = "https://${local.ocir_docker_repository}/${local.ocir_namespace}/"
+}
