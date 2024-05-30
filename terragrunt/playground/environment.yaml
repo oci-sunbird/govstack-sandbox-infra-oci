@@ -1,0 +1,9 @@
+region: ""
+home_region: ""
+tenancy_id: ""
+compartment_id: ""
+ad_count: 1
+tags:
+  {
+    "Origin": "Terraform",
+  }
