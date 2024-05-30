@@ -61,7 +61,7 @@ resource "local_sensitive_file" "deployment_status" {
       tenancy_id        = var.tenancy_id,
       region            = var.region,
       auth_token        = oci_identity_auth_token.bastion_user_auth_token.token,
-      bastion_iam_key   = tls_private_key.bastion_user_key.private_key_pem,
+      bastion_iam_key   = base64encode(tls_private_key.bastion_user_key.private_key_pem),
       bastion_public_ip = oci_core_instance.bastion.public_ip,
       ocir_url          = local.ocir_url,
       docker_server     = local.docker_server,
