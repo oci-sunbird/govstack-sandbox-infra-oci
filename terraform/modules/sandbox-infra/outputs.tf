@@ -35,8 +35,8 @@ output "bastion_hosts_var_maps" {
     compartment_id          = var.compartment_id
     zone_compartment_id     = var.compartment_id
     region                  = var.region
-    # oke_k8s_cluster_id      = module.k8s_infra.cluster_id
-    # nsg_lb_oke_k8s_cluster  = module.k8s_infra.pub_lb_nsg_id
+    oke_k8s_cluster_id      = module.k8s_infra.cluster_id
+    nsg_lb_oke_k8s_cluster  = module.k8s_infra.pub_lb_nsg_id
     oke_k8s_cluster_name    = local.oke_name
 
   }
