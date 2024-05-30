@@ -4,6 +4,9 @@ tenancy_id: ""
 compartment_id: ""
 cluster_name: ""
 ad_count: 1
+repositories:
+  - "app/usct/backend"
+  - "app/usct/frontend"
 tags:
   {
     "Origin": "Terraform",

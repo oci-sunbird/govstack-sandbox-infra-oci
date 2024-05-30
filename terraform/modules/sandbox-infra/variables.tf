@@ -148,3 +148,13 @@ variable "output_dir" {
   description = "where generate output"
   default     = "/iac-run-dir/output"
 }
+
+variable "repositories" {
+  type = list(string)
+}
+
+variable "is_public" {
+  description = "If the type of repository is public."
+  type        = bool
+  default     = "false"
+}

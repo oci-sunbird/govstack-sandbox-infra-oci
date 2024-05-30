@@ -33,6 +33,7 @@ inputs = {
   region         = local.env_vars.region
   cluster_name   = local.env_vars.cluster_name
   tags           = local.env_vars.tags
+  repositories   = local.env_vars.repositories
 }
 
 locals {
