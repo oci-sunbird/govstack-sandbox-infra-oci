@@ -26,19 +26,19 @@ output "all_hosts_var_maps" {
 output "bastion_hosts_var_maps" {
   sensitive = true
   value = {
-    ansible_ssh_common_args          = "-o StrictHostKeyChecking=no"
-    egress_gateway_cidr              = var.vcn_cidr
-    bastion_public_ip                = oci_core_instance.bastion.public_ip
-    bastion_user_id                  = oci_identity_user.bastion_iam_user.id
-    fingerprint                      = oci_identity_api_key.bastion_iam_user_key.fingerprint
-    tenancy_id                       = var.tenancy_id
-    compartment_id                   = var.compartment_id
-    zone_compartment_id              = var.compartment_id
-    region                           = var.region
-    oke_k8s_cluster_id               = module.k8s_infra.cluster_id
-    nsg_lb_oke_k8s_cluster           = module.k8s_infra.pub_lb_nsg_id
-    oke_k8s_cluster_name             = local.oke_name
-  
+    ansible_ssh_common_args = "-o StrictHostKeyChecking=no"
+    egress_gateway_cidr     = var.vcn_cidr
+    bastion_public_ip       = oci_core_instance.bastion.public_ip
+    bastion_user_id         = oci_identity_user.bastion_iam_user.id
+    fingerprint             = oci_identity_api_key.bastion_iam_user_key.fingerprint
+    tenancy_id              = var.tenancy_id
+    compartment_id          = var.compartment_id
+    zone_compartment_id     = var.compartment_id
+    region                  = var.region
+    oke_k8s_cluster_id      = module.k8s_infra.cluster_id
+    nsg_lb_oke_k8s_cluster  = module.k8s_infra.pub_lb_nsg_id
+    oke_k8s_cluster_name    = local.oke_name
+
   }
 }
 
