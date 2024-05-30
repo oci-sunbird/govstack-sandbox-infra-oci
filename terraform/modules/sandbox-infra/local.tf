@@ -15,8 +15,8 @@ locals {
   identifying_tags      = { Cluster = var.cluster_name, Domain = local.cluster_domain }
   common_tags           = merge(local.identifying_tags, var.tags)
   ads                   = slice(data.oci_identity_availability_domains.ads.availability_domains, 0, var.ad_count)
-  public_subnets_list   = ["public-subnet"]
-  private_subnets_list  = ["private-subnet", "oke-control-plane"]
+  public_subnets_list   = ["public-subnet", "oke-control-plane"]
+  private_subnets_list  = ["private-subnet"]
   network_cidr_blocks = {
     for idx, subnet in concat(local.public_subnets_list, local.private_subnets_list) : subnet =>
     (subnet == "oke-control-plane") ? cidrsubnet(var.vcn_cidr, 12, 0) : cidrsubnet(var.vcn_cidr, 8, idx + 1)
@@ -27,7 +27,7 @@ locals {
     name       = name
     cidr_block = local.public_subnet_cidrs[idx]
     type       = "public"
-    dns_label  = "public"
+    dns_label  = (name == "oke-control-plane") ? "okectrp" : "public"
   } }
   private_subnets = { for idx, name in local.private_subnets_list : "private_sub${idx + 1}" => {
     name       = name
@@ -58,15 +58,17 @@ locals {
 
 
 locals {
-  vcn_id                               = module.vcn.vcn_id
-  base_infra_private_subnet_cidr_block = module.vcn.subnet_all_attributes.private_sub1.cidr_block
-  base_infra_public_subnet_cidr_block  = module.vcn.subnet_all_attributes.public_sub1.cidr_block
-  base_infra_private_subnet_id         = module.vcn.subnet_id.private-subnet
-  base_infra_public_subnet_id          = module.vcn.subnet_id.public-subnet
-  oke_pod_cidrs                        = (lookup(var.k8s_cluster_properties, "cni", "flannel") == "flannel") ? var.flannel_pods_cidr : local.base_infra_private_subnet_cidr_block
-  cp_allowed_cidrs                     = ["${local.base_infra_private_subnet_cidr_block}", "${local.base_infra_public_subnet_cidr_block}"]
-  home_region                          = lookup(data.oci_identity_regions.home_region.regions[0], "name")
-  oke_name                             = "${var.workload_name}-${var.sandbox_env}"
+  vcn_id                                         = module.vcn.vcn_id
+  base_infra_private_subnet_cidr_block           = module.vcn.subnet_all_attributes.private_sub1.cidr_block
+  base_infra_public_subnet_cidr_block            = module.vcn.subnet_all_attributes.public_sub1.cidr_block
+  base_infra_oke_control_plane_subnet_cidr_block = module.vcn.subnet_all_attributes.public_sub2.cidr_block
+  base_infra_private_subnet_id                   = module.vcn.subnet_id.private-subnet
+  base_infra_public_subnet_id                    = module.vcn.subnet_id.public-subnet
+  base_infra_oke_control_plane_subnet_id         = module.vcn.subnet_id.oke-control-plane
+  oke_pod_cidrs                                  = (lookup(var.k8s_cluster_properties, "cni", "flannel") == "flannel") ? var.flannel_pods_cidr : local.base_infra_private_subnet_cidr_block
+  cp_allowed_cidrs                               = ["${local.base_infra_private_subnet_cidr_block}", "${local.base_infra_public_subnet_cidr_block}"]
+  home_region                                    = lookup(data.oci_identity_regions.home_region.regions[0], "name")
+  oke_name                                       = "${var.workload_name}-${var.sandbox_env}"
 }
 
 locals {
@@ -121,8 +123,8 @@ locals {
     },
     "cp" = {
       "create" = "never"
-      "id"     = local.base_infra_private_subnet_id
-      "cidr"   = local.base_infra_private_subnet_cidr_block
+      "id"     = local.base_infra_oke_control_plane_subnet_id
+      "cidr"   = local.base_infra_oke_control_plane_subnet_cidr_block
     },
     "int_lb" = {
       "create" = "never"

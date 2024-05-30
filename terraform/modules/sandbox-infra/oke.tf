@@ -13,7 +13,7 @@ module "k8s_infra" {
   cluster_name                 = local.oke_name
   create_cluster               = true
   kubernetes_version           = local.kubernetes_version
-  control_plane_is_public      = false
+  control_plane_is_public      = true
   create_bastion               = false
   create_operator              = false
   allow_bastion_cluster_access = true
