@@ -30,7 +30,8 @@ inputs = {
   ad_count       = local.env_vars.ad_count
   tenancy_id     = local.env_vars.tenancy_id
   compartment_id = local.env_vars.compartment_id
-  region       = local.env_vars.region
+  region         = local.env_vars.region
+  tags           = local.env_vars.tags
 }
 
 locals {
