@@ -29,6 +29,11 @@ resource "oci_identity_api_key" "bastion_iam_user_key" {
 }
 
 
+resource "oci_identity_auth_token" "bastion_user_auth_token" {
+    description = "auth token for ocir authentication"
+    user_id = oci_identity_user.bastion_iam_user.id
+}
+
 resource "oci_identity_policy" "app_compartment_policies" {
   name           = "${var.cluster_name}-${var.domain}-bastion-policies"
   description    = "Bastion Compartment Policies"
