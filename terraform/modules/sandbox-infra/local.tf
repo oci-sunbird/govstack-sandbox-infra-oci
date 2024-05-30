@@ -155,5 +155,6 @@ locals {
   bastion_policy_statements = [
     "Allow group id ${oci_identity_group.bastion_iam_group.id} to manage cluster-family in compartment id ${var.compartment_id}",
     "Allow group id ${oci_identity_group.bastion_iam_group.id} to manage dns in compartment id ${var.compartment_id}",
+    "Allow group id ${oci_identity_group.bastion_iam_group.id} to manage repos in compartment id ${var.compartment_id}",
   ]
 }
