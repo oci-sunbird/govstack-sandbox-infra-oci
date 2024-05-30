@@ -1,23 +1,3 @@
-# # Individual Rules
-# locals {
-#   gitlab_instance_in_compartment_rule = ["ALL {instance.id = '${oci_core_instance.gitlab_server.id}'}"]
-# }
-
-# locals {
-#   dynamic_group_matching_rules = concat(
-#     local.gitlab_instance_in_compartment_rule
-#   )
-# }
-
-# ## Temporarily commented till we get access to test this tenancy
-
-# # resource "oci_identity_dynamic_group" "gitlab_dynamic_group" {
-# #   name           = "${replace(var.domain, ".", "-")}-${var.cluster_name}-gitlab"
-# #   description    = "${replace(var.domain, ".", "-")}-${var.cluster_name}-gitlab"
-# #   compartment_id = var.tenancy_id
-# #   matching_rule  = "ANY {${join(",", local.dynamic_group_matching_rules)}}"
-# #   provider       = oci.home_region
-# # }
 
 
 resource "oci_identity_user" "bastion_iam_user" {

@@ -31,6 +31,7 @@ inputs = {
   tenancy_id     = local.env_vars.tenancy_id
   compartment_id = local.env_vars.compartment_id
   region         = local.env_vars.region
+  cluster_name   = local.env_vars.cluster_name
   tags           = local.env_vars.tags
 }
 

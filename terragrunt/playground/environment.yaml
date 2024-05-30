@@ -2,6 +2,7 @@ region: ""
 home_region: ""
 tenancy_id: ""
 compartment_id: ""
+cluster_name: ""
 ad_count: 1
 tags:
   {
