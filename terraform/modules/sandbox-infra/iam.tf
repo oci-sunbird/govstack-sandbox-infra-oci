@@ -30,8 +30,9 @@ resource "oci_identity_api_key" "bastion_iam_user_key" {
 
 
 resource "oci_identity_auth_token" "bastion_user_auth_token" {
-    description = "auth token for ocir authentication"
-    user_id = oci_identity_user.bastion_iam_user.id
+  description = "auth token for ocir authentication"
+  user_id     = oci_identity_user.bastion_iam_user.id
+  provider    = oci.home
 }
 
 resource "oci_identity_policy" "app_compartment_policies" {
