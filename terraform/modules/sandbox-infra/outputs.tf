@@ -66,6 +66,7 @@ resource "local_sensitive_file" "deployment_status" {
       ocir_url          = local.ocir_url,
       docker_server     = local.docker_server,
       docker_user       = local.docker_user,
+      oke_cluster_id    = module.k8s_infra.cluster_id,
   bastion_ssh_key = tls_private_key.compute_ssh_key.private_key_pem })
   filename        = "${var.output_dir}/outputs.txt"
   file_permission = "0600"
