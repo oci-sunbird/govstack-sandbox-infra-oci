@@ -165,4 +165,6 @@ locals {
   ocir_docker_repository = join("", [lower(lookup(local.current_region[0], "key")), ".ocir.io"])
   ocir_namespace         = lookup(data.oci_objectstorage_namespace.ns, "namespace")
   ocir_url               = "${local.ocir_docker_repository}/${local.ocir_namespace}"
+  docker_server          = local.ocir_docker_repository
+  docker_user            = "${local.ocir_namespace}/${oci_identity_user.bastion_iam_user.name}"
 }

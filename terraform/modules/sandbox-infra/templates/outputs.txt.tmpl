@@ -10,11 +10,10 @@ OCI_CLI_KEY_CONTENT=${bastion_iam_key}
 CI/CD Environment variables
 --------------------------- 
 CONTAINER_REGISTRY=${ocir_url}
+DOCKER_SERVER=${docker_server}
+DOCKER_USERNAME=${docker_user}
+DOCKER_PASSWORD=${auth_token}
 
-
-OCIR Secret Token
------------------
-${auth_token}
 
 Bastion Details:
 ----------------
