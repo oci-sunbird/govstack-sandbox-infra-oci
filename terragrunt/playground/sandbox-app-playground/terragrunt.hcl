@@ -3,7 +3,7 @@ terraform {
 }
 
 dependency "sandbox_infra" {
-  config_path = "../sandbox-infra"
+  config_path = "../sandbox-infra-playground"
   mock_outputs = {
     bastion_hosts          = {}
     bastion_hosts_var_maps = {}
