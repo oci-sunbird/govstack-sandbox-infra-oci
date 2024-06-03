@@ -1,4 +1,4 @@
 - name: Install USCT
   shell: |
-    cd /root/mosip/artifactory/
-    ./install.sh
+    cd /root/govstack/usct_backend
+    helm upgrade --install usct ./use-case-helm/ --create-namespace --namespace usct
