@@ -45,11 +45,37 @@
   apt:
     update_cache: yes
 
+- name: Install Pip3
+  apt:
+    name: python3-pip
+    update_cache: yes
+
+
 - name: Install dependencies
   package:
     name:
       - python3
       - curl
+      - libpq-dev
+      - postgresql
+
+- name: Install kubernetes pre requisites
+  pip:
+    name: 
+      - kubernetes
+      - psycopg2
+
+- name: Install oci sdk
+  pip:
+    name: 
+      - pyOpenSSL
+      - oci
+
+- name: Remove OpenSSL python packages
+  shell: |
+    rm -R /usr/lib/python3/dist-packages/OpenSSL
+    pip3 install pyOpenSSL --upgrade
+
 
 - name: Install kubectl
   shell: |
