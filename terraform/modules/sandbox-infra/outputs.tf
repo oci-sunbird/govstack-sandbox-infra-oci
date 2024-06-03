@@ -34,7 +34,7 @@ output "bastion_hosts_var_maps" {
     tenancy_id              = var.tenancy_id
     auth_token              = oci_identity_auth_token.bastion_user_auth_token.token
     bastion_iam_key         = base64encode(tls_private_key.bastion_user_key.private_key_pem)
-    bastion_ssh_key = tls_private_key.compute_ssh_key.private_key_pem
+    bastion_ssh_key         = tls_private_key.compute_ssh_key.private_key_pem
     ocir_url                = local.ocir_url
     docker_server           = local.docker_server
     docker_user             = local.docker_user
@@ -45,6 +45,7 @@ output "bastion_hosts_var_maps" {
     oke_k8s_cluster_id      = module.k8s_infra.cluster_id
     nsg_lb_oke_k8s_cluster  = module.k8s_infra.pub_lb_nsg_id
     oke_k8s_cluster_name    = local.oke_name
+    dummy                   = "dummy"
   }
 }
 
