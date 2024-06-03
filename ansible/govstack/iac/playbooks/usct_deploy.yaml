@@ -5,4 +5,4 @@
   roles:
     # - govstack.iac.bastion_common
     # - govstack.iac.oke_common
-    - govstack.iac.ucst_deploy
+    - govstack.iac.usct_deploy
