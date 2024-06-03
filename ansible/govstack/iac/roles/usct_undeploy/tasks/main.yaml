@@ -1,1 +1,1 @@
-- include_tasks: install_usct.yaml
+- include_tasks: uninstall_usct.yaml
