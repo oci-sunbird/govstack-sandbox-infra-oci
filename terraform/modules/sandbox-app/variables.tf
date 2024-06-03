@@ -16,15 +16,6 @@ variable "ansible_bastion_iam_key" {
   sensitive   = true
 }
 
-variable "ansible_ssl_cert_private_key" {
-  description = "ssl cert private key"
-  sensitive   = true
-}
-
-variable "ansible_ssl_cert" {
-  description = "ssl certificate"
-  sensitive   = true
-}
 
 variable "ansible_bastion_public_ip" {
   description = "ip for bastion host"
