@@ -33,8 +33,6 @@ inputs = {
 locals {
   env_vars = yamldecode(
   file("${find_in_parent_folders("environment.yaml")}"))
-  env_map = { for val in local.env_vars.envs :
-  val["env"] => val }
 }
 
 include "root" {
