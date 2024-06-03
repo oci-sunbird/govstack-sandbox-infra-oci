@@ -4,7 +4,7 @@ resource "local_sensitive_file" "ansible_inventory" {
     "${path.module}/templates/inventory.yaml.tmpl",
     { all_hosts              = merge(var.bastion_hosts),
       bastion_hosts          = var.bastion_hosts,
-      bastion_hosts_var_maps = merge(var.bastion_hosts_var_maps, local.iam_private_key_file_map, local.ssl_cert_private_key_file_map, local.ssl_cert_file_map),
+      bastion_hosts_var_maps = merge(var.bastion_hosts_var_maps, local.iam_private_key_file_map),
     all_hosts_var_maps = merge(var.all_hosts_var_maps, local.ssh_private_key_file_map) }
 
   )
@@ -79,14 +79,3 @@ resource "local_sensitive_file" "bastion_iam_key" {
   file_permission = "0600"
 }
 
-resource "local_sensitive_file" "ssl_cert_private_key" {
-  content         = var.ansible_ssl_cert_private_key
-  filename        = "${local.ansible_output_dir}/ssl_cert_private_key.key"
-  file_permission = "0600"
-}
-
-resource "local_sensitive_file" "ssl_cert" {
-  content         = var.ansible_ssl_cert
-  filename        = "${local.ansible_output_dir}/ssl_cert.pem"
-  file_permission = "0600"
-}
