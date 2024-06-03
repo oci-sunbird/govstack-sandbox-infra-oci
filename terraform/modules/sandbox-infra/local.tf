@@ -66,7 +66,7 @@ locals {
   base_infra_public_subnet_id                    = module.vcn.subnet_id.public-subnet
   base_infra_oke_control_plane_subnet_id         = module.vcn.subnet_id.oke-control-plane
   oke_pod_cidrs                                  = (lookup(var.k8s_cluster_properties, "cni", "flannel") == "flannel") ? var.flannel_pods_cidr : local.base_infra_private_subnet_cidr_block
-  cp_allowed_cidrs                               = ["${local.base_infra_private_subnet_cidr_block}", "${local.base_infra_public_subnet_cidr_block}","0.0.0.0/0"]
+  cp_allowed_cidrs                               = ["${local.base_infra_private_subnet_cidr_block}", "${local.base_infra_public_subnet_cidr_block}", "0.0.0.0/0"]
   home_region                                    = lookup(data.oci_identity_regions.home_region.regions[0], "name")
   oke_name                                       = "${var.workload_name}-${var.sandbox_env}"
 }
