@@ -13,21 +13,21 @@ resource "local_sensitive_file" "ansible_inventory" {
 }
 
 
-resource "local_sensitive_file" "deployment_status" {
-  content = templatefile(
-    "${path.module}/templates/outputs.txt.tmpl",
-    { domain                           = var.bastion_hosts_var_maps["domain"],
-      sbrc_keycloak_admin_password     = var.bastion_hosts_var_maps["sbrc_keycloak_admin_password"],
-      sbrc_keycloak_admin_api_secret   = var.bastion_hosts_var_maps["sbrc_keycloak_admin_api_secret"],
-      filestorage_root_password        = var.bastion_hosts_var_maps["filestorage_root_password"],
-      postgres_admin_user              = var.bastion_hosts_var_maps["postgres_admin_user"],
-      postgres_connectionInfo_password = var.bastion_hosts_var_maps["postgres_connectionInfo_password"],
-      postgress_db_host                = var.bastion_hosts_var_maps["postgress_db_host"],
-      bastion_public_ip                = var.bastion_hosts_var_maps["bastion_public_ip"],
-      bastion_ssh_key = var.ansible_bastion_key })
-  filename        = "${local.ansible_output_dir}/outputs.txt"
-  file_permission = "0600"
-}
+# resource "local_sensitive_file" "deployment_status" {
+#   content = templatefile(
+#     "${path.module}/templates/outputs.txt.tmpl",
+#     { domain                           = var.bastion_hosts_var_maps["domain"],
+#       sbrc_keycloak_admin_password     = var.bastion_hosts_var_maps["sbrc_keycloak_admin_password"],
+#       sbrc_keycloak_admin_api_secret   = var.bastion_hosts_var_maps["sbrc_keycloak_admin_api_secret"],
+#       filestorage_root_password        = var.bastion_hosts_var_maps["filestorage_root_password"],
+#       postgres_admin_user              = var.bastion_hosts_var_maps["postgres_admin_user"],
+#       postgres_connectionInfo_password = var.bastion_hosts_var_maps["postgres_connectionInfo_password"],
+#       postgress_db_host                = var.bastion_hosts_var_maps["postgress_db_host"],
+#       bastion_public_ip                = var.bastion_hosts_var_maps["bastion_public_ip"],
+#       bastion_ssh_key = var.ansible_bastion_key })
+#   filename        = "${local.ansible_output_dir}/outputs.txt"
+#   file_permission = "0600"
+# }
 
 resource "null_resource" "run_ansible" {
   provisioner "local-exec" {
