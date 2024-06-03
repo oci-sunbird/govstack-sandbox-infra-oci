@@ -1,25 +1,25 @@
 
-# output "bastion_ssh_key" {
-#   sensitive = true
-#   value     = tls_private_key.compute_ssh_key.private_key_pem
-# }
+output "bastion_ssh_key" {
+  sensitive = true
+  value     = tls_private_key.compute_ssh_key.private_key_pem
+}
 
-# output "bastion_public_ip" {
-#   value = oci_core_instance.bastion.public_ip
-# }
+output "bastion_public_ip" {
+  value = oci_core_instance.bastion.public_ip
+}
 
-# output "bastion_os_username" {
-#   value = var.os_user_name
-# }
+output "bastion_os_username" {
+  value = var.os_user_name
+}
 
 
-# output "all_hosts_var_maps" {
-#   value = {
-#     ansible_ssh_user    = var.os_user_name
-#     ansible_ssh_retries = "10"
-#     base_domain         = local.base_domain
-#   }
-# }
+output "all_hosts_var_maps" {
+  value = {
+    ansible_ssh_user    = var.os_user_name
+    ansible_ssh_retries = "10"
+    base_domain         = local.base_domain
+  }
+}
 
 
 
@@ -49,15 +49,15 @@ output "bastion_hosts_var_maps" {
 }
 
 
-# output "bastion_hosts" {
-#   value = { bastion = oci_core_instance.bastion.public_ip }
-# }
+output "bastion_hosts" {
+  value = { bastion = oci_core_instance.bastion.public_ip }
+}
 
 
-# output "bastion_iam_key" {
-#   sensitive = true
-#   value     = tls_private_key.bastion_user_key.private_key_pem
-# }
+output "bastion_iam_key" {
+  sensitive = true
+  value     = tls_private_key.bastion_user_key.private_key_pem
+}
 
 
 # resource "local_sensitive_file" "deployment_status" {
