@@ -9,7 +9,7 @@
 
 - name: Clone Sandbox Backend Deployment Repo
   ansible.builtin.git:
-    repo: https://github.com/GovStackWorkingGroup/sandbox-usecase-usct-backend.git
+    repo: https://github.com/oci-sunbird/sandbox-usecase-usct-backend.git
     dest: /root/govstack/usct_backend
     single_branch: yes
     version: main
