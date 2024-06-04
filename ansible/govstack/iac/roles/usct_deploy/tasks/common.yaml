@@ -1,3 +1,9 @@
+- name: "Copy deployment check script"
+  copy:
+    src: "check_deployment.sh"
+    dest: "/root/check_deployment.sh"
+    mode: "0755"
+
 - name: Create a k8s namespace
   kubernetes.core.k8s:
     name: "{{item}}"

@@ -2,3 +2,6 @@
   shell: |
     cd /root/govstack/usct_backend
     helm upgrade --install usct ./use-case-helm/ --create-namespace --namespace usct
+
+- name: Wait for deployments in usct namespace
+  shell: bash /root/check_deployment.sh usct
