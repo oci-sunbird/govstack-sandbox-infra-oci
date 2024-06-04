@@ -60,37 +60,3 @@ output "bastion_iam_key" {
   value     = tls_private_key.bastion_user_key.private_key_pem
 }
 
-
-# resource "local_sensitive_file" "deployment_status" {
-#   content = templatefile(
-#     "${path.module}/templates/outputs.txt.tmpl",
-#     { fingerprint       = oci_identity_api_key.bastion_iam_user_key.fingerprint,
-#       bastion_user_id   = oci_identity_user.bastion_iam_user.id,
-#       tenancy_id        = var.tenancy_id,
-#       region            = var.region,
-#       auth_token        = oci_identity_auth_token.bastion_user_auth_token.token,
-#       bastion_iam_key   = base64encode(tls_private_key.bastion_user_key.private_key_pem),
-#       bastion_public_ip = oci_core_instance.bastion.public_ip,
-#       ocir_url          = local.ocir_url,
-#       docker_server     = local.docker_server,
-#       docker_user       = local.docker_user,
-#       oke_cluster_id    = module.k8s_infra.cluster_id,
-#   bastion_ssh_key = tls_private_key.compute_ssh_key.private_key_pem })
-#   filename        = "${var.output_dir}/outputs.txt"
-#   file_permission = "0600"
-# }
-
-
-# output "application" {
-#   description = "Deployment Results"
-#   value       = data.local_file.output.content
-
-# }
-
-
-# data "local_file" "output" {
-#   filename = "${var.output_dir}/outputs.txt"
-#   depends_on = [
-#     local_sensitive_file.deployment_status
-#   ]
-# }
