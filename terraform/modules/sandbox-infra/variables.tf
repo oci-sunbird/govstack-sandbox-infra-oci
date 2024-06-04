@@ -150,7 +150,18 @@ variable "output_dir" {
 }
 
 variable "repositories" {
-  type = list(string)
+  type    = list(string)
+  default = [
+    "app/usct/backend",
+    "app/usct/frontend",
+    "app/bp/frontend",
+    "app/rpc/backend",
+    "bb/im/sandbox-x-road/central-server",
+    "bb/im/sandbox-x-road/security-server",
+    "bb/payments/adapter",
+    "bb/payments/emulator",
+    "bb/digital-registries/emulator"
+  ]
 }
 
 variable "is_public" {
