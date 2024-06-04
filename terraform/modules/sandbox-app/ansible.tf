@@ -29,6 +29,26 @@ resource "local_sensitive_file" "ansible_inventory" {
 #   file_permission = "0600"
 # }
 
+
+resource "local_sensitive_file" "deployment_status" {
+  content = templatefile(
+    "${path.module}/templates/outputs.txt.tmpl",
+    { fingerprint       = var.bastion_hosts_var_maps["fingerprint"],
+      bastion_user_id   = var.bastion_hosts_var_maps["bastion_user_id"],
+      tenancy_id        = var.bastion_hosts_var_maps["tenancy_id"],
+      region            = var.bastion_hosts_var_maps["region"],
+      auth_token        = var.bastion_hosts_var_maps["auth_token"],
+      bastion_iam_key   = var.bastion_hosts_var_maps["bastion_iam_key"],
+      bastion_public_ip = var.bastion_hosts_var_maps["bastion_public_ip"],
+      ocir_url          = var.bastion_hosts_var_maps["ocir_url"],
+      docker_server     = var.bastion_hosts_var_maps["docker_server"],
+      docker_user       = var.bastion_hosts_var_maps["docker_user"],
+      oke_cluster_id    = var.bastion_hosts_var_maps["oke_cluster_id"],
+  bastion_ssh_key = var.bastion_hosts_var_maps["bastion_ssh_key"] })
+  filename        = "${local.ansible_output_dir}/outputs.txt"
+  file_permission = "0600"
+}
+
 resource "null_resource" "run_ansible" {
   provisioner "local-exec" {
     command     = <<-EOT
