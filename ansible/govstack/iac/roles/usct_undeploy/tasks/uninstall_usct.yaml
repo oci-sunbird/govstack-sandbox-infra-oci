@@ -1,9 +1,9 @@
 - name: Uninstall USCT
   shell: |
-    helm uninstall usct --namespace usct
+    # helm uninstall usct --namespace usct
     # sleep 60
-    # for pvc in $(kubectl -n usct get pvc -o name); do
-    #   kubectl delete $pvc
-    # done
+    for pvc in $(kubectl -n usct get pvc -o name); do
+      kubectl delete $pvc
+    done
 
 
