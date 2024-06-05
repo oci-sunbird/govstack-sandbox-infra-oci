@@ -18,5 +18,5 @@
     repo: https://github.com/oci-sunbird/sandbox-usecase-usct-backend.git
     dest: /root/govstack/usct_backend
     single_branch: yes
-    version: main
+    version: customized_backend
 
