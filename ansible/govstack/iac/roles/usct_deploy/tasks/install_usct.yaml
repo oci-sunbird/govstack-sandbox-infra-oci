@@ -1,7 +1,7 @@
 - name: Install USCT
   shell: |
     cd /root/govstack/usct_backend
-    helm upgrade --install usct ./use-case-helm/ --create-namespace --namespace usct
+    helm upgrade --install usct ./use-case-helm/ --create-namespace --namespace sandbox-im
 
 - name: Wait for deployments in usct namespace
-  shell: bash /root/check_deployment.sh usct
+  shell: bash /root/check_deployment.sh sandbox-im
