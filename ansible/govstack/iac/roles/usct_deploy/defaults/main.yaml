@@ -26,7 +26,7 @@ backend_consent_url: http://sandbox-xroad-ss2.usct.svc.cluster.local:8080/r1/SAN
 open_imis_deployment_password: Welc@me1234
 open_imis_postgress_password: Welc@me1234
 
-frontend_image: ghcr.io/govstackworkinggroup/sandbox-usecase-usct-frontend:latest
+frontend_image: ghcr.io/oci-sunbird/sandbox-usecase-usct-frontend:latest
 
 consent_smtp_admin_email: xyz@gmail.com
 consent_smtp_user_email: xyz@gmail.com
