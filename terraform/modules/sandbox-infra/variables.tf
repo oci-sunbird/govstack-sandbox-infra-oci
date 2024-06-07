@@ -94,7 +94,7 @@ variable "k8s_cluster_properties" {
   default = {
     shape                   = "VM.Standard.E4.Flex"
     ocpus                   = 2
-    memory                  = 16
+    memory                  = 32
     boot_volume_size        = 50
     node_pool_size          = 3
     worker_image_os_version = 7.9
