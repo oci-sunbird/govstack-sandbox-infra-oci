@@ -1,0 +1,159 @@
+usct-backend:
+  enabled: true
+  deployment:
+    containers:
+      image: {{backend_image}}
+      imageTag: {{backend_image_tag}}
+
+  service:
+    name: backend
+    authmode: {{backend_auth_mode}}
+
+  payment:
+    config:
+      mode: {{backend_payment_mode}}
+    bb:
+      im:
+        base_url: {{backend_payment_base_url}}
+
+  oidcKeystorePassword: ""
+
+  paymenthub:
+    bb:
+      account_mapper_url: {{backend_payment_hub_acc_map_url}}
+      bulk_connector_url: {{backend_payment_hub_bulk_conn_url}}
+      callback_base_url: {{backend_payment_hub_callback_url}}
+
+  openImis:
+    url: {{backend_open_ims_url}}
+    emulator_url: {{backend_open_ims_emulator_url}}
+
+  igrant:
+    url: {{backend_consent_url}}
+
+  
+open-imis:
+  enabled: true
+  backend:
+    deployment:
+      dbPassword: {{open_imis_deployment_password}}
+    service:
+      name: open-imis-backend
+  db:
+    dbService:
+      name: open-imis-db
+      port: 5432
+      postgresPassword: {{open_imis_postgress_password}}
+      username: "IMISuser"
+      password: {{open_imis_postgress_password}}
+      database:
+        name: "IMIS"
+    secret:
+      password: {{open_imis_postgress_password}}
+
+information-mediator:
+  enabled: true
+
+usct-frontend:
+  enabled: true
+  containers:
+    image: {{frontend_image}}
+
+consentbb:
+  enabled: true
+  # Namespace for kubernetes cluster
+  namespace: {{usct_namespace}}
+  # Prefix for kubernetes object names
+  storageClassName: "oci-bv"
+  adminDashboard:
+    configuration:
+      appVersion: 2023.11.6
+      clientId: igrant-ios-app
+    enabled: true
+    image: igrantio/bb-consent-admin-dashboard:2023.11.6
+    ingress:
+      enabled: false
+  api:
+    configuration:
+      Iam:
+        ClientId: igrant-ios-app
+        realm: BB-Consent-Users
+        url: http://usct-sandbox-keycloak-svc:8080
+      Organization:
+        description: GovStack is committed to safeguarding your privacy. We process
+          your personal data in line with data agreements, ensuring adherence to ISO27560
+          standards and legal frameworks like GDPR. For every personal data we process,
+          you can view its usage purpose and make informed choices to opt in or out.
+          For inquiries, contact our Data Protection Officer at dpo@govstack.global
+        eulaUrl: https://www.govstack.global/coc/
+        location: Sweden
+        name: GovStack
+      Policy:
+        GeographicRestriction: Sweden
+        IndustrySector: Public
+        Name: Policy 1
+        StorageLocation: Sweden
+        Url: https://www.govstack.global/privacy/
+      PrivacyDashboardDeployment:
+        Version: 2023.11.6
+      Smtp:
+        adminEmail: {{consent_smtp_admin_email}}
+        host: smtp.gmail.com
+        port: 587
+        username: {{consent_smtp_user_email}}
+      TestMode: false
+      User:
+        password: {{demo_password}}
+        username: admin@govstack.global
+      Webhooks:
+        events:
+          - consent.allowed
+          - consent.disallowed
+    enabled: true
+    image: igrantio/bb-consent-api:2023.12.2
+    ingress:
+      enabled: false
+  keycloak:
+    adminPassword: {{demo_password}}
+    adminUsername: admin
+    dbName: bitnami_keycloak
+    dbUsername: bn_keycloak
+    enabled: true
+    image: docker.io/bitnami/keycloak:22.0.2-debian-11-r0
+    ingress:
+      enabled: false
+  mongo:
+    database: bb-consent-consentdb
+    enabled: true
+    image: bitnami/mongodb:7.0
+    username: bb-consent-user
+  postgres:
+    database: bitnami_keycloak
+    enabled: true
+    image: bitnami/postgresql:14.10.0
+    username: bn_keycloak
+  prefix: {{usct_prefix}}
+  privacyDashboard:
+    configuration:
+      clientId: igrant-ios-app
+    enabled: true
+    image: igrantio/bb-consent-privacy-dashboard:2023.11.6
+    ingress:
+      enabled: false
+  resources: { }
+  securityContext:
+    runAsUser: 0
+
+ph-ee-g2psandbox:
+  enabled: true
+  ph-ee-engine:
+    elasticsearch:
+      imagePullPolicy: "IfNotPresent"
+      volumeClaimTemplate:
+        storageClassName: "oci-bv"
+
+payment-emulator:
+  enabled: true
+
+digital-registries-emulator:
+  enabled: true

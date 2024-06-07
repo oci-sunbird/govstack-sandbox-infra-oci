@@ -1,7 +1,14 @@
-- name: Install USCT
-  shell: |
-    cd /root/govstack/usct_backend
-    helm upgrade --install usct ./use-case-helm/ --create-namespace --namespace sandbox-im
+- name: Copy chart overrides values
+  template:
+    src: "demo-builder-values.yaml.j2"
+    dest: "/root/govstack/usct_backend/sanbox-demo-builder/use-cases/usct-full/demo-builder-values.yaml"
+    mode: '0755'
 
-- name: Wait for deployments in usct namespace
-  shell: bash /root/check_deployment.sh sandbox-im
+
+# - name: Install USCT
+#   shell: |
+#     cd /root/govstack/usct_backend/sanbox-demo-builder
+#     helm upgrade --install usct ./use-case-helm/ --create-namespace --namespace sandbox-im
+
+# - name: Wait for deployments in usct namespace
+#   shell: bash /root/check_deployment.sh sandbox-im
