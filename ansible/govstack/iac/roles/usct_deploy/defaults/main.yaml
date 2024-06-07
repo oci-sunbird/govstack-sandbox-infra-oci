@@ -6,7 +6,7 @@ frontend_enabled: true
 open_imis_enabled: true
 im_enabled: true
 consent_enabled: true
-payment_hub_enabled: false
+payment_hub_enabled: true
 payment_emulator_enabled: true
 digital_registries_emulator_enabled: true
 
