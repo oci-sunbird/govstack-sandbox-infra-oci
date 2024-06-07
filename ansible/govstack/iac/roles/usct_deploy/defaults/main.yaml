@@ -7,8 +7,8 @@ open_imis_enabled: false
 im_enabled: false
 consent_enabled: false
 payment_hub_enabled: false
-payment_emulator_enabled: false
-digital_registries_emulator_enabled: false
+payment_emulator_enabled: true
+digital_registries_emulator_enabled: true
 
 
 backend_image: ghcr.io/govstackworkinggroup/sandbox-usecase-usct-backend
