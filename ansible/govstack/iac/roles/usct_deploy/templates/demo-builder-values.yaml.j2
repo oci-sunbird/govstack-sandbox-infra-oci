@@ -49,7 +49,7 @@ open-imis:
       database:
         name: "IMIS"
     secret:
-      password: {{open_imis_postgress_password}}
+      password: {{open_imis_postgress_password | b64encode}}
 
 information-mediator:
   enabled: {{im_enabled}}
