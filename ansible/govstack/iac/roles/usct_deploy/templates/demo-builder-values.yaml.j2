@@ -1,5 +1,5 @@
 usct-backend:
-  enabled: true
+  enabled: {{backend_enabled}}
   deployment:
     containers:
       image: {{backend_image}}
@@ -33,7 +33,7 @@ usct-backend:
 
   
 open-imis:
-  enabled: true
+  enabled: {{open_imis_enabled}}
   backend:
     deployment:
       dbPassword: {{open_imis_deployment_password}}
@@ -52,15 +52,15 @@ open-imis:
       password: {{open_imis_postgress_password}}
 
 information-mediator:
-  enabled: true
+  enabled: {{im_enabled}}
 
 usct-frontend:
-  enabled: true
+  enabled: {{frontend_enabled}}
   containers:
     image: {{frontend_image}}
 
 consentbb:
-  enabled: true
+  enabled: {{consent_enabled}}
   # Namespace for kubernetes cluster
   namespace: {{usct_namespace}}
   # Prefix for kubernetes object names
@@ -145,7 +145,7 @@ consentbb:
     runAsUser: 0
 
 ph-ee-g2psandbox:
-  enabled: true
+  enabled: {{payment_hub_enabled}}
   ph-ee-engine:
     elasticsearch:
       imagePullPolicy: "IfNotPresent"
@@ -153,7 +153,7 @@ ph-ee-g2psandbox:
         storageClassName: "oci-bv"
 
 payment-emulator:
-  enabled: true
+  enabled: {{payment_emulator_enabled}}
 
 digital-registries-emulator:
-  enabled: true
+  enabled: {{digital_registries_emulator_enabled}}
