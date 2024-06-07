@@ -3,7 +3,7 @@ usct_prefix: sandbox
 
 backend_enabled: true
 frontend_enabled: true
-open_imis_enabled: true
+open_imis_enabled: false
 im_enabled: true
 consent_enabled: false
 payment_hub_enabled: false
