@@ -1,7 +1,7 @@
 - name: Copy chart overrides values
   template:
     src: "demo-builder-values.yaml.j2"
-    dest: "/root/govstack/usct_backend/sanbox-demo-builder/use-cases/usct-full/demo-builder-values.yaml"
+    dest: "/root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/demo-builder-values.yaml"
     mode: '0755'
 
 
