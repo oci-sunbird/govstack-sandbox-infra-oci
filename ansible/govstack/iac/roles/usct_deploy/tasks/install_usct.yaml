@@ -4,12 +4,25 @@
     dest: "/root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/demo-builder-values.yaml"
     mode: '0755'
 
+- name: Copy chart open imis backend overrides values
+  template:
+    src: "open-imis-backend-override.yaml.j2"
+    dest: "/root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/open-imis-backend-override.yaml"
+    mode: '0755'
 
 - name: Install USCT
   shell: |
     cd /root/govstack/usct_backend/sandbox-demo-builder/use-cases
     helm dependency update ./usct-full/
     helm upgrade --install usct ./usct-full/ --create-namespace --namespace {{usct_namespace}} --values /root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/demo-builder-values.yaml
+
+
+- name: Install USCT with openimis backend
+  shell: |
+    cd /root/govstack/usct_backend/sandbox-demo-builder/use-cases
+    helm dependency update ./usct-full/
+    helm upgrade --install usct ./usct-full/ --create-namespace --namespace {{usct_namespace}} --values /root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/open-imis-backend-override.yaml
+
 
 # - name: Wait for deployments in usct namespace
 #   shell: bash /root/check_deployment.sh sandbox-im
