@@ -5,10 +5,11 @@
     mode: '0755'
 
 
-# - name: Install USCT
-#   shell: |
-#     cd /root/govstack/usct_backend/sanbox-demo-builder
-#     helm upgrade --install usct ./use-case-helm/ --create-namespace --namespace sandbox-im
+- name: Install USCT
+  shell: |
+    cd /root/govstack/usct_backend/sandbox-demo-builder/use-cases
+    helm dependency update ./usct-full/
+    # helm upgrade --install usct ./use-case-helm/ --create-namespace --namespace sandbox-im
 
 # - name: Wait for deployments in usct namespace
 #   shell: bash /root/check_deployment.sh sandbox-im
