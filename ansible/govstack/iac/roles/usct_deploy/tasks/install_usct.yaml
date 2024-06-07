@@ -10,6 +10,12 @@
     dest: "/root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/open-imis-backend-override.yaml"
     mode: '0755'
 
+- name: Copy run migration scripts
+  template:
+    src: "run_migrations.sh.j2"
+    dest: "/root/run_migrations.sh"
+    mode: '0755'
+
 - name: Install USCT
   shell: |
     cd /root/govstack/usct_backend/sandbox-demo-builder/use-cases
@@ -25,6 +31,11 @@
     helm dependency update ./usct-full/
     helm upgrade --install usct ./usct-full/ --create-namespace --namespace {{usct_namespace}} --values /root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/open-imis-backend-override.yaml
 
+- name: Wait for deployments
+  shell: bash /root/check_deployment.sh {{usct_namespace}}
+
+- name: Run open imis migrations
+  shell: bash /root/run_migrations.sh
 
 # - name: Wait for deployments in usct namespace
 #   shell: bash /root/check_deployment.sh sandbox-im
