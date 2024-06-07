@@ -1,7 +1,7 @@
 usct_namespace: usct
 usct_prefix: sandbox
 
-backend_enabled: false
+backend_enabled: true
 frontend_enabled: true
 open_imis_enabled: false
 im_enabled: true
