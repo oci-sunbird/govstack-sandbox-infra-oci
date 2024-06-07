@@ -9,7 +9,7 @@
   shell: |
     cd /root/govstack/usct_backend/sandbox-demo-builder/use-cases
     helm dependency update ./usct-full/
-    # helm upgrade --install usct ./use-case-helm/ --create-namespace --namespace sandbox-im
+    helm upgrade --install usct ./usct-full/ --create-namespace --namespace {{usct_namespace}} --values /root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/demo-builder-values.yaml
 
 # - name: Wait for deployments in usct namespace
 #   shell: bash /root/check_deployment.sh sandbox-im
