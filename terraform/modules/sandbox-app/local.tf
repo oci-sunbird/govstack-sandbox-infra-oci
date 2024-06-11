@@ -9,6 +9,11 @@ locals {
   iam_private_key_file_map = {
     ansible_bastion_iam_private_key_file = local_sensitive_file.bastion_iam_key.filename
   }
-
+  ssl_cert_private_key_file_map = {
+    ansible_ssl_cert_private_key_file = local_sensitive_file.ssl_cert_private_key.filename
+  }
+  ssl_cert_file_map = {
+    ansible_ssl_cert_file = local_sensitive_file.ssl_cert.filename
+  }
 }
 

@@ -169,3 +169,15 @@ variable "is_public" {
   type        = bool
   default     = "false"
 }
+
+variable "ssl_certificate" {
+  type        = string
+  description = "ssl certificate file"
+  default     = ""
+}
+
+variable "ssl_private_key" {
+  type        = string
+  description = "ssl certificate private key"
+  default     = ""
+}

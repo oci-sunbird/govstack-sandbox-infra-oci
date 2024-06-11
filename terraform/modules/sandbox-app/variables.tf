@@ -45,3 +45,13 @@ variable "all_hosts_var_maps" {
   type        = map(any)
   description = "var map for all hosts"
 }
+
+variable "ansible_ssl_cert_private_key" {
+  description = "ssl cert private key"
+  sensitive   = true
+}
+
+variable "ansible_ssl_cert" {
+  description = "ssl certificate"
+  sensitive   = true
+}

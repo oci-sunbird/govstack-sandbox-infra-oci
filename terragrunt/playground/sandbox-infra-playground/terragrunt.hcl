@@ -34,6 +34,8 @@ inputs = {
   cluster_name              = local.env_vars.cluster_name
   tags                      = local.env_vars.tags
   k8s_allow_rules_public_lb = local.env_vars.k8s_allow_rules_public_lb
+  ssl_private_key           = local.env_vars.ssl_private_key
+  ssl_certificate           = local.env_vars.ssl_certificate
 }
 
 locals {
