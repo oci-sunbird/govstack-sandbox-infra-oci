@@ -33,7 +33,7 @@ inputs = {
   region                    = local.env_vars.region
   cluster_name              = local.env_vars.cluster_name
   tags                      = local.env_vars.tags
-  k8s_allow_rules_public_lb = local.env_vars.k8s_allow_rules_public
+  k8s_allow_rules_public_lb = local.env_vars.k8s_allow_rules_public_lb
 }
 
 locals {
