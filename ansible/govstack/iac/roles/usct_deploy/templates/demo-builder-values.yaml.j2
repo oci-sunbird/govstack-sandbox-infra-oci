@@ -68,13 +68,25 @@ consentbb:
   storageClassName: "oci-bv"
   adminDashboard:
     configuration:
-      baseUrl: http://sandbox-im-sandbox-api-svc/v2
+      baseUrl: https://consentbb-api.igrant.io/v2
       appVersion: 2023.11.6
       clientId: igrant-ios-app
     enabled: true
     image: igrantio/bb-consent-admin-dashboard:2023.11.6
     ingress:
       enabled: true
+      annotations:
+        kubernetes.io/ingress.allow-http: "false"
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        nginx.ingress.kubernetes.io/proxy-buffer-size: 128k
+      hosts:
+        - host: consentbb-admin-dashboard.igrant.io
+          paths:
+            - path: /
+              pathType: Prefix
+            - path: /*
+              pathType: Prefix
   api:
     configuration:
       Iam:
@@ -114,7 +126,19 @@ consentbb:
     enabled: true
     image: igrantio/bb-consent-api:2023.12.2
     ingress:
-      enabled: false
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.allow-http: "false"
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        nginx.ingress.kubernetes.io/proxy-buffer-size: 128k
+      hosts:
+        - host: consentbb-api.igrant.io
+          paths:
+            - path: /
+              pathType: Prefix
+            - path: /*
+              pathType: Prefix
   keycloak:
     adminPassword: {{demo_password}}
     adminUsername: admin
