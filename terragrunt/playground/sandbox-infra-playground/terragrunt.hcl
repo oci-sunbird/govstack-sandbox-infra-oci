@@ -27,12 +27,13 @@ EOF
 
 
 inputs = {
-  ad_count       = local.env_vars.ad_count
-  tenancy_id     = local.env_vars.tenancy_id
-  compartment_id = local.env_vars.compartment_id
-  region         = local.env_vars.region
-  cluster_name   = local.env_vars.cluster_name
-  tags           = local.env_vars.tags
+  ad_count                  = local.env_vars.ad_count
+  tenancy_id                = local.env_vars.tenancy_id
+  compartment_id            = local.env_vars.compartment_id
+  region                    = local.env_vars.region
+  cluster_name              = local.env_vars.cluster_name
+  tags                      = local.env_vars.tags
+  k8s_allow_rules_public_lb = local.env_vars.k8s_allow_rules_public
 }
 
 locals {
