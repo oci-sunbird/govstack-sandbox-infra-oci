@@ -12,8 +12,9 @@ digital_registries_emulator_enabled: true
 
 
 # backend_image: ghcr.io/govstackworkinggroup/sandbox-usecase-usct-backend
+# backend_image_tag: paymenthub-1
 backend_image: ghcr.io/oci-sunbird/sandbox-usecase-usct-backend
-backend_image_tag: paymenthub-1
+backend_image_tag: latest
 backend_auth_mode: local
 backend_payment_mode: emulator
 backend_payment_base_url: http://sandbox-xroad-ss2.{{usct_namespace}}.svc.cluster.local:8080/r1/SANDBOX/GOV/PROVIDER/PAYMENT/api
