@@ -36,6 +36,7 @@ inputs = {
   k8s_allow_rules_public_lb = local.env_vars.k8s_allow_rules_public_lb
   ssl_private_key           = local.env_vars.ssl_private_key
   ssl_certificate           = local.env_vars.ssl_certificate
+  domain                    = local.env_vars.domain
 }
 
 locals {

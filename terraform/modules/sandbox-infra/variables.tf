@@ -181,3 +181,8 @@ variable "ssl_private_key" {
   description = "ssl certificate private key"
   default     = ""
 }
+
+variable "domain" {
+  description = "A Valid DNS domain."
+  type        = string
+}

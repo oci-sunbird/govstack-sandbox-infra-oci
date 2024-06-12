@@ -47,6 +47,7 @@ output "bastion_hosts_var_maps" {
     oke_k8s_cluster_name    = local.oke_name
     ssl_private_key         = var.ssl_private_key
     ssl_certificate         = var.ssl_certificate
+    domain                  = var.domain
     dummy                   = "dummy"
   }
 }
