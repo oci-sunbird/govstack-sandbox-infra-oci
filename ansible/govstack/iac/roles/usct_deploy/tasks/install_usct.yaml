@@ -4,12 +4,6 @@
     dest: "/root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/demo-builder-values.yaml"
     mode: '0755'
 
-# - name: Copy chart open imis backend overrides values
-#   template:
-#     src: "open-imis-backend-override.yaml.j2"
-#     dest: "/root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/open-imis-backend-override.yaml"
-#     mode: '0755'
-
 - name: Copy run migration scripts
   template:
     src: "run_migrations.sh.j2"
