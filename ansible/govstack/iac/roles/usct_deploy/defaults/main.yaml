@@ -21,7 +21,7 @@ backend_payment_hub_bulk_conn_url: http://sandbox-xroad-ss2.{{usct_namespace}}.s
 backend_payment_hub_callback_url: http://backend.{{usct_namespace}}.svc.cluster.local:8080
 backend_open_ims_url: http://sandbox-xroad-ss2.{{usct_namespace}}.svc.cluster.local:8080/r1/SANDBOX/GOV/PROVIDER/DIGITAL-REGISTRIES/api/data/registryname/111?search=package&filter=phone
 backend_open_ims_emulator_url: http://sandbox-xroad-ss2.{{usct_namespace}}.svc.cluster.local:8080/r1/SANDBOX/GOV/PROVIDER/DIGITAL-REGISTRIES/emulator/api/v1/data/bpkg/1.0
-backend_consent_url: http://sandbox-xroad-ss2.{{usct_namespace}}.svc.cluster.local:8080/r1/SANDBOX/GOV/PROVIDER/CONSENT/api/v2/service/individual/record/consent-record
+backend_consent_url: http://sandbox-xroad-ss2.{{usct_namespace}}.svc.cluster.local:8080/r1/SANDBOX/GOV/PROVIDER/CONSENT/api/v2/service/individual/record/
 backend_consent_mode: igrant
 backend_consent_token: ""
 backend_consent_data_agree_id: ""
