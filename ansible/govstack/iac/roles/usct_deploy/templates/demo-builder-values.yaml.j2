@@ -68,7 +68,7 @@ consentbb:
   storageClassName: "oci-bv"
   adminDashboard:
     configuration:
-      baseUrl: http://consentbb-api.igrant.io/v2
+      baseUrl: https://consentbb-api.{{domain}}/v2
       appVersion: 2023.11.6
       clientId: igrant-ios-app
     enabled: true
@@ -81,7 +81,7 @@ consentbb:
         nginx.ingress.kubernetes.io/enable-cors: "true"
         nginx.ingress.kubernetes.io/proxy-buffer-size: 128k
       hosts:
-        - host: consentbb-admin-dashboard.igrant.io
+        - host: consentbb-admin-dashboard.{{domain}}
           paths:
             - path: /
               pathType: Prefix
@@ -133,7 +133,7 @@ consentbb:
         nginx.ingress.kubernetes.io/enable-cors: "true"
         nginx.ingress.kubernetes.io/proxy-buffer-size: 128k
       hosts:
-        - host: consentbb-api.igrant.io
+        - host: consentbb-api.{{domain}}
           paths:
             - path: /
               pathType: Prefix
@@ -154,7 +154,7 @@ consentbb:
         nginx.ingress.kubernetes.io/enable-cors: "true"
         nginx.ingress.kubernetes.io/proxy-buffer-size: 128k
       hosts:
-        - host: test-keycloak.igrant.io
+        - host: consent-keycloak.{{domain}}
           paths:
             - path: /
               pathType: Prefix
@@ -171,8 +171,8 @@ consentbb:
   prefix: {{usct_prefix}}
   privacyDashboard:
     configuration:
-      baseUrl: http://consentbb-api.igrant.io/v2
-      redirectUrl: https://consentbb-privacy-dashboard.igrant.io/login
+      baseUrl: https://consentbb-api.{{domain}}/v2
+      redirectUrl: https://consentbb-privacy-dashboard.{{domain}}/login
       clientId: igrant-ios-app
     enabled: true
     image: igrantio/bb-consent-privacy-dashboard:2023.11.6
@@ -184,7 +184,7 @@ consentbb:
         nginx.ingress.kubernetes.io/enable-cors: "true"
         nginx.ingress.kubernetes.io/proxy-buffer-size: 128k
       hosts:
-        - host: consentbb-privacy-dashboard.igrant.io
+        - host: consentbb-privacy-dashboard.{{domain}}
           paths:
             - path: /
               pathType: Prefix
