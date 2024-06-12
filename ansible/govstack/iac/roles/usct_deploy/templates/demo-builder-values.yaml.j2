@@ -29,7 +29,10 @@ usct-backend:
 
   igrant:
     url: {{backend_consent_url}}
-    mode: "local"
+    mode: {{backend_consent_mode}}
+    token: {{backend_consent_token}}
+    dataAgreementId: {{backend_consent_data_agree_id}}
+    header: {{backend_consent_header}}
 
   
 open-imis:
