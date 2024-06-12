@@ -26,15 +26,16 @@
   shell: bash /root/check_deployment.sh {{usct_namespace}}
 
 
+- name: Enable openimis backend
+  set_fact:
+    open_imis_backend_enabled: true
+
 - name: Copy chart overrides values
   template:
     src: "demo-builder-values.yaml.j2"
     dest: "/root/govstack/usct_backend/sandbox-demo-builder/use-cases/usct-full/demo-builder-values.yaml"
     mode: '0755'
 
-- name: Enable openimis backend
-  set_fact:
-    open_imis_backend_enabled: true
 
 - name: Install USCT with openimis backend
   shell: |
