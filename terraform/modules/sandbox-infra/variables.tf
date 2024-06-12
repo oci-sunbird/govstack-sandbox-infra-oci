@@ -70,12 +70,6 @@ variable "bastion_state" {
   type        = string
 }
 
-variable "domain" {
-  description = "Domain to attach the cluster to."
-  type        = string
-  default     = ""
-}
-
 variable "node_pool_shape" {
   default     = "VM.Standard.E3.Flex"
   description = "A shape is a template that determines the number of OCPUs, amount of memory, and other resources allocated to a newly created instance."
