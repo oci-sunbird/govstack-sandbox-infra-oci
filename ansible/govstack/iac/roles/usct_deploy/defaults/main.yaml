@@ -14,9 +14,6 @@ digital_registries_emulator_enabled: true
 ## ingress section
 
 frontend_ingress_enabled: true
-im_ss1_ingress_enabled: false
-im_ss2_ingress_enabled: false
-im_ss3_ingress_enabled: true
 
 backend_image: ghcr.io/govstackworkinggroup/sandbox-usecase-usct-backend
 backend_image_tag: paymenthub-1
