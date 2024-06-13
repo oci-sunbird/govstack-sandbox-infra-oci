@@ -14,6 +14,12 @@
     - usct
     - sandbox-im
 
+- name: Cleanup previously cloned repository
+  ansible.builtin.file:
+    path: /root/govstack/usct_backend
+    state: absent
+
+
 - name: Clone Sandbox Backend Deployment Repo
   ansible.builtin.git:
     repo: https://github.com/oci-sunbird/sandbox-usecase-usct-backend.git
