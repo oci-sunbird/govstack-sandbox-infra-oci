@@ -63,6 +63,13 @@ usct-frontend:
   enabled: {{frontend_enabled}}
   containers:
     image: {{frontend_image}}
+  ingress:
+    enabled: {{frontend_ingress_enabled}}
+    hosts:
+      - host: usct-frontend.{{domain}}
+        paths:
+          - path: /
+            pathType: Prefix
 
 consentbb:
   enabled: {{consent_enabled}}
