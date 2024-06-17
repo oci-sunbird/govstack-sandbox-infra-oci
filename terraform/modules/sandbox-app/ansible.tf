@@ -44,6 +44,7 @@ resource "local_sensitive_file" "deployment_status" {
       docker_server     = var.bastion_hosts_var_maps["docker_server"],
       docker_user       = var.bastion_hosts_var_maps["docker_user"],
       oke_cluster_id    = var.bastion_hosts_var_maps["oke_cluster_id"],
+      domain            = var.bastion_hosts_var_maps["domain"],
   bastion_ssh_key = var.bastion_hosts_var_maps["bastion_ssh_key"] })
   filename        = "${local.ansible_output_dir}/outputs.txt"
   file_permission = "0600"

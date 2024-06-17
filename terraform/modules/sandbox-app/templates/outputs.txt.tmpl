@@ -1,3 +1,35 @@
+Unconditional social cash transfer (USCT)
+-----------------------------------------
+
+Frontend url: https://usct-frontend.${domain}/driver-poc/login
+XRoad Servers Login: xrd/secret
+Central Server: https://im-cs.${domain}
+Security Server 1: https://im-ss1.${domain}
+Security Server 2: https://im-ss2.${domain}
+Security Server 3: https://im-ss3.${domain}
+
+
+Xroad Setup Instructions
+------------------------
+
+Login to Security Server 3: https://im-ss3.${domain}
+
+Navigate to 'Clients' tab and press 'Add subsystem' button.
+Fill 'PAYMENT' name as Subsystem Code.
+Press Yes in Register client popup window.
+Go into new 'PAYMENT' subsystem CAPITAL CASE
+Click on 'Services' tub.
+Press 'Add REST' button.
+Choose 'OpenAPI 3 Description' option
+Fill 'http://payment-bb-emulator.sandbox-im.svc.cluster.local:8080/v3/api-docs' into URL placeholder and 'api' into Service Code.
+Enable a new created service --> click on the related switch.
+Expand a new created REST definition
+Press 'Add subjects' in the 'Service Parameters' tab
+Press 'Search' button
+Check 'Client' and 'Provider' checkboxes and press 'Add selected'
+Close popup
+
+
 OCI Authentication Details For CI/CD 
 ------------------------------------
 OCI_CLI_USER=${bastion_user_id}
