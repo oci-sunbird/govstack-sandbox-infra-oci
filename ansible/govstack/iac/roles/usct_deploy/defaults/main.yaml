@@ -4,7 +4,7 @@ usct_prefix: sandbox
 backend_enabled: true
 frontend_enabled: true
 open_imis_enabled: true
-im_enabled: false
+im_enabled: true
 consent_enabled: true
 payment_hub_enabled: false
 payment_emulator_enabled: true
