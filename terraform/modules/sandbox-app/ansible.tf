@@ -54,7 +54,7 @@ resource "null_resource" "run_ansible" {
   provisioner "local-exec" {
     command     = <<-EOT
           ansible-galaxy collection install ${var.ansible_collection_url},${var.ansible_collection_tag}
-          #ansible-playbook govstack.iac.usct_deploy -i ${local_sensitive_file.ansible_inventory.filename}
+          ansible-playbook govstack.iac.usct_deploy -i ${local_sensitive_file.ansible_inventory.filename}
     EOT
     working_dir = path.module
   }
@@ -73,7 +73,7 @@ resource "null_resource" "run_ansible_undeploy" {
     when        = destroy
     command     = <<-EOT
           echo "Run ansible playbook for USCT undeploy"
-          # ansible-playbook govstack.iac.usct_undeploy -i ${self.triggers.inventory_file_name}
+          ansible-playbook govstack.iac.usct_undeploy -i ${self.triggers.inventory_file_name}
     EOT
     working_dir = path.module
   }
