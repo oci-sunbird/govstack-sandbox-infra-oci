@@ -73,7 +73,7 @@ resource "null_resource" "run_ansible_undeploy" {
     when        = destroy
     command     = <<-EOT
           echo "Run ansible playbook for USCT undeploy"
-          ansible-playbook govstack.iac.usct_undeploy -i ${self.triggers.inventory_file_name}
+          # ansible-playbook govstack.iac.usct_undeploy -i ${self.triggers.inventory_file_name}
     EOT
     working_dir = path.module
   }
